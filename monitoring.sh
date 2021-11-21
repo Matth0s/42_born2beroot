@@ -1,7 +1,5 @@
 #!/bin/bash
 
-rm -rf temp.tmp
-
 {
 echo "/------------------------------------------------------------------------------"
 echo "|" "Architecture :" "$(uname -a)"
@@ -23,8 +21,8 @@ echo "|" "Users Logged :" "$(who | wc -l)"
 echo "|" "Network      :" "IP $(hostname -I)" "($(/usr/sbin/ifconfig | awk '/ether/ {print $2}'))"
 echo "|" "Sudo         :" "$(grep -c 'COMMAND' /var/log/sudo/sudo.log)" "cmd"
 echo "\------------------------------------------------------------------------------"
-} >> temp.tmp
+} > temp.tmp
 
-cat temp.tmp
+wall -n temp.tmp
 
 rm -rf temp.tmp
